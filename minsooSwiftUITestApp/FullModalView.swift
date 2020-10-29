@@ -16,11 +16,11 @@ struct FullModalView: View {
                 Color.pink
                 VStack(content: {
                     Spacer().frame(height: 50 + geometry.safeAreaInsets.top)
-                    Text("This is Modal View")
+                    Text("This is Modal View").onTapGesture(count: 1, perform: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
                     Spacer()
                 }).frame(width: UIScreen.main.bounds.size.width)
-            }).onTapGesture(count: 1, perform: {
-                presentationMode.wrappedValue.dismiss()
             }).ignoresSafeArea()
         }
     }
