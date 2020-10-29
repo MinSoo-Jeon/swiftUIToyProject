@@ -18,7 +18,7 @@ struct FullModalView: View {
                     Spacer().frame(height: 50 + geometry.safeAreaInsets.top)
                     Text("This is Modal View").onTapGesture(count: 1, perform: {
                         presentationMode.wrappedValue.dismiss()
-                    })
+                    }).foregroundColor(.white)
                     Spacer()
                 }).frame(width: UIScreen.main.bounds.size.width)
             }).ignoresSafeArea()

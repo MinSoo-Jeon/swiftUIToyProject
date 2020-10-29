@@ -18,7 +18,7 @@ struct PushedView: View {
                     Spacer().frame(height: 50 + geometry.safeAreaInsets.top)
                     Text("This is Pushed View").onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                         presentationMode.wrappedValue.dismiss()
-                    })
+                    }).foregroundColor(.white)
                     Spacer()
                 })
             }).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).navigationBarHidden(true)
