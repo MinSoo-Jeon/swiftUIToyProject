@@ -24,7 +24,6 @@ struct ContentView: View {
     let noticeView = NoticeView()
     @State private var noticePageZIndex = 1.0
     @State private var currentTab = MainTabType.home
-    let menuView = MenuView()
     @State private var isMenuViewShown = false
     @State private var menuViewWidth : CGFloat = UIScreen.main.bounds.size.width * 0.6
     @State var orientation = UIDevice.current.orientation
@@ -123,15 +122,12 @@ struct ContentView: View {
                                 self.menuViewWidth = UIScreen.main.bounds.size.width * 0.6
                             })
                         })
-                        menuView.frame(width: menuViewWidth, height:  UIScreen.main.bounds.size.height, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-                            withAnimation{
-                                self.menuViewWidth = 0
+                        MenuView().frame(width: menuViewWidth, height:  UIScreen.main.bounds.size.height, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide))
+                            .onDisappear(){
+                                if isMenuViewShown{
+                                    isMenuViewShown = false
+                                }
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
-                                self.isMenuViewShown.toggle()
-                                self.menuViewWidth = UIScreen.main.bounds.size.width * 0.6
-                            })
-                        })
                     }
                    
                 }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)
