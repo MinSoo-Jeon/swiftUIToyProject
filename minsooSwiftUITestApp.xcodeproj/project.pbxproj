@@ -12,6 +12,7 @@
 		014FB9672549687A001F0294 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014FB9662549687A001F0294 /* Launch Screen.storyboard */; };
 		014FB96B254A56C1001F0294 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FB96A254A56C1001F0294 /* ModalView.swift */; };
 		014FB96E254A6198001F0294 /* PushedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FB96D254A6198001F0294 /* PushedView.swift */; };
+		014FB975254AA0F3001F0294 /* DimmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FB974254AA0F3001F0294 /* DimmedView.swift */; };
 		018E84852547DAD200EF6236 /* minsooSwiftUITestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84842547DAD200EF6236 /* minsooSwiftUITestAppApp.swift */; };
 		018E84872547DAD200EF6236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84862547DAD200EF6236 /* ContentView.swift */; };
 		018E84892547DAD400EF6236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018E84882547DAD400EF6236 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		014FB9662549687A001F0294 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		014FB96A254A56C1001F0294 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		014FB96D254A6198001F0294 /* PushedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushedView.swift; sourceTree = "<group>"; };
+		014FB974254AA0F3001F0294 /* DimmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmedView.swift; sourceTree = "<group>"; };
 		018E84812547DAD200EF6236 /* minsooSwiftUITestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minsooSwiftUITestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018E84842547DAD200EF6236 /* minsooSwiftUITestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = minsooSwiftUITestAppApp.swift; sourceTree = "<group>"; };
 		018E84862547DAD200EF6236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -81,6 +83,7 @@
 				014FB9662549687A001F0294 /* Launch Screen.storyboard */,
 				014FB96A254A56C1001F0294 /* ModalView.swift */,
 				014FB96D254A6198001F0294 /* PushedView.swift */,
+				014FB974254AA0F3001F0294 /* DimmedView.swift */,
 			);
 			path = minsooSwiftUITestApp;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			files = (
 				01260F7125490A9B00507D75 /* MenuView.swift in Sources */,
 				014FB96B254A56C1001F0294 /* ModalView.swift in Sources */,
+				014FB975254AA0F3001F0294 /* DimmedView.swift in Sources */,
 				01260F6925480B3E00507D75 /* NoticeView.swift in Sources */,
 				018E84872547DAD200EF6236 /* ContentView.swift in Sources */,
 				014FB96E254A6198001F0294 /* PushedView.swift in Sources */,

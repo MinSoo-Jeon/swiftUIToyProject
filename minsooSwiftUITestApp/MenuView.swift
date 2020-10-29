@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct MenuView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
-        VStack{
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
             Color.orange
-        }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack{
+                List{
+                    Text("1")
+                    Text("2")
+                    Text("3")
+                }.colorMultiply(.orange)
+            }
+        })
     }
 }
 

@@ -26,7 +26,11 @@ struct ContentView: View {
     @State private var currentTab = MainTabType.home
     let menuView = MenuView()
     @State private var isMenuViewShown = false
-    @State private var menuViewWidth : CGFloat = UIScreen.main.bounds.size.width
+    @State private var menuViewWidth : CGFloat = UIScreen.main.bounds.size.width * 0.6
+    @State var orientation = UIDevice.current.orientation
+    let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
     
     func getStatusBarColor(selectTag : MainTabType) -> Color {
         switch selectTag {
@@ -74,7 +78,7 @@ struct ContentView: View {
     var body: some View {
        NavigationView{
             GeometryReader { geometry in
-                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top), content: {
                     VStack(spacing:0.0){
                         getStatusBarColor(selectTag: currentTab).frame(width: geometry.size.width, height: geometry.safeAreaInsets.top, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).edgesIgnoringSafeArea(.all)
                         ZStack(content: {
@@ -110,13 +114,22 @@ struct ContentView: View {
                         Color.white.frame(width: UIScreen.main.bounds.size.width, height: geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }
                     if isMenuViewShown {
+                        DimmedView().onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                            withAnimation{
+                                self.menuViewWidth = 0
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                                self.isMenuViewShown.toggle()
+                                self.menuViewWidth = UIScreen.main.bounds.size.width * 0.6
+                            })
+                        })
                         menuView.frame(width: menuViewWidth, height:  UIScreen.main.bounds.size.height, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                             withAnimation{
                                 self.menuViewWidth = 0
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
                                 self.isMenuViewShown.toggle()
-                                self.menuViewWidth = UIScreen.main.bounds.size.width
+                                self.menuViewWidth = UIScreen.main.bounds.size.width * 0.6
                             })
                         })
                     }
@@ -124,6 +137,9 @@ struct ContentView: View {
                 }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)
             }
        }.navigationViewStyle(StackNavigationViewStyle())
+       .onReceive(orientationChanged) { _ in
+        menuViewWidth = UIScreen.main.bounds.size.width * 0.6
+       }
     }
 }
 
