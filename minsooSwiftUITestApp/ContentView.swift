@@ -26,8 +26,6 @@ struct ContentView: View {
     @State private var currentTab = MainTabType.home
     let menuView = MenuView()
     @State private var isMenuViewShown = false
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
     @State private var menuViewWidth : CGFloat = UIScreen.main.bounds.size.width
     
     func getStatusBarColor(selectTag : MainTabType) -> Color {
@@ -69,12 +67,12 @@ struct ContentView: View {
             actionBlock()
         }) { image.resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: screenWidth/5 - 40 , height: 50, alignment: .center)
-        }.frame(width: screenWidth/5, height: 60).foregroundColor(.gray) )
+            .frame(width:  UIScreen.main.bounds.size.width/5 - 40 , height: 50, alignment: .center)
+        }.frame(width:  UIScreen.main.bounds.size.width/5, height: 60).foregroundColor(.gray) )
     }
     
     var body: some View {
-        NavigationView{
+       NavigationView{
             GeometryReader { geometry in
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
                     VStack(spacing:0.0){
@@ -84,7 +82,7 @@ struct ContentView: View {
                             trackingView.zIndex(trackingPageZIndex);
                             deliveryView.zIndex(deliveryPageZIndex);
                             noticeView.zIndex(noticePageZIndex);
-                        }).frame(width: screenWidth, height: screenHeight - 60 - geometry.safeAreaInsets.top - geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }).frame(width: UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height - 60 - geometry.safeAreaInsets.top - geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         HStack(spacing: 0.0){
                             tabBtn(actionBlock: {
                                 withAnimation{
@@ -108,24 +106,24 @@ struct ContentView: View {
                                 changeTab(selectTag: .notice)
                             }, image: currentTab == .notice ?  Image(systemName: "megaphone.fill") :  Image(systemName: "megaphone"))
                             
-                        }.frame(width: screenWidth, height: 60, alignment: .center).background(Color.white).edgesIgnoringSafeArea(.all)
-                        Color.white.frame(width: geometry.size.width, height: geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }.frame(width: UIScreen.main.bounds.size.width, height: 60, alignment: .center).background(Color.white).edgesIgnoringSafeArea(.all)
+                        Color.white.frame(width: UIScreen.main.bounds.size.width, height: geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }
                     if isMenuViewShown {
-                        menuView.frame(width: menuViewWidth, height: screenHeight, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                        menuView.frame(width: menuViewWidth, height:  UIScreen.main.bounds.size.height, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                             withAnimation{
                                 self.menuViewWidth = 0
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
                                 self.isMenuViewShown.toggle()
-                                self.menuViewWidth = screenWidth
+                                self.menuViewWidth = UIScreen.main.bounds.size.width
                             })
                         })
                     }
                    
                 }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)
             }
-        }
+       }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -11,6 +11,7 @@ struct HomePageView: View {
     
     @State private var isFullPresented = false
     @State private var isSheetPresented = false
+    @State private var isPopOverPresented = false
     
     var body: some View {
         ZStack(content: {
@@ -28,11 +29,25 @@ struct HomePageView: View {
                     Text("Navigation Link (Push)").foregroundColor(.white)
                 }
                 Spacer().frame(height : 50)
-                Text("Sheet (present)").foregroundColor(.white).sheet(isPresented: $isSheetPresented, content: {
+                Text("Sheet (Present)").foregroundColor(.white).sheet(isPresented: $isSheetPresented, content: {
                     ModalView()
                 }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                     isSheetPresented.toggle()
                 })
+                Spacer().frame(height : 50)
+                
+                if UIDevice.current.userInterfaceIdiom == .pad{
+                    Text("PopOver").foregroundColor(.white).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                        isPopOverPresented.toggle()
+                    }).popover(isPresented: $isPopOverPresented) {
+                        VStack{
+                            Text("A").frame(width: 100, height: 100, alignment: .center).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                                isPopOverPresented.toggle()
+                            })
+                        }
+                    }
+                }
+                
                 Spacer()
             })
         })

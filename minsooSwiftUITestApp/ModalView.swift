@@ -20,7 +20,7 @@ struct ModalView: View {
                         presentationMode.wrappedValue.dismiss()
                     }).foregroundColor(.white)
                     Spacer()
-                }).frame(width: UIScreen.main.bounds.size.width)
+                })
             }).ignoresSafeArea()
         }
     }
