@@ -22,6 +22,10 @@ struct HomePageView: View {
                     }).fullScreenCover(isPresented: $isPresented, content: {
                         FullModalView()
                     })
+                Spacer().frame(height : 50)
+                NavigationLink(destination: PushedView()){
+                    Text("Navigation Link (Push)").foregroundColor(.white)
+                }
                 Spacer()
             })
         })

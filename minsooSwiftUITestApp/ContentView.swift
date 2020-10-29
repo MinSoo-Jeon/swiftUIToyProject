@@ -74,55 +74,57 @@ struct ContentView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
-                VStack(spacing:0.0){
-                    getStatusBarColor(selectTag: currentTab).frame(width: geometry.size.width, height: geometry.safeAreaInsets.top, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).edgesIgnoringSafeArea(.all)
-                    ZStack(content: {
-                        homePageView.zIndex(homePageZIndex);
-                        trackingView.zIndex(trackingPageZIndex);
-                        deliveryView.zIndex(deliveryPageZIndex);
-                        noticeView.zIndex(noticePageZIndex);
-                    }).frame(width: screenWidth, height: screenHeight - 60 - geometry.safeAreaInsets.top - geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    HStack(spacing: 0.0){
-                        tabBtn(actionBlock: {
+        NavigationView{
+            GeometryReader { geometry in
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
+                    VStack(spacing:0.0){
+                        getStatusBarColor(selectTag: currentTab).frame(width: geometry.size.width, height: geometry.safeAreaInsets.top, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).edgesIgnoringSafeArea(.all)
+                        ZStack(content: {
+                            homePageView.zIndex(homePageZIndex);
+                            trackingView.zIndex(trackingPageZIndex);
+                            deliveryView.zIndex(deliveryPageZIndex);
+                            noticeView.zIndex(noticePageZIndex);
+                        }).frame(width: screenWidth, height: screenHeight - 60 - geometry.safeAreaInsets.top - geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        HStack(spacing: 0.0){
+                            tabBtn(actionBlock: {
+                                withAnimation{
+                                    self.isMenuViewShown.toggle()
+                                }
+                            }, image: Image(systemName: "list.star"))
+                            
+                            tabBtn(actionBlock: {
+                                changeTab(selectTag: .home)
+                            }, image: currentTab == .home ?  Image(systemName: "house.fill") :  Image(systemName: "house"))
+                            
+                            tabBtn(actionBlock: {
+                                changeTab(selectTag: .tracking)
+                            }, image: currentTab == .tracking ?  Image(systemName: "magnifyingglass.circle.fill") :  Image(systemName: "magnifyingglass.circle"))
+                            
+                            tabBtn(actionBlock: {
+                                changeTab(selectTag: .delivery)
+                            }, image: currentTab == .delivery ?  Image(systemName: "bus.fill") :  Image(systemName: "bus"))
+                            
+                            tabBtn(actionBlock: {
+                                changeTab(selectTag: .notice)
+                            }, image: currentTab == .notice ?  Image(systemName: "megaphone.fill") :  Image(systemName: "megaphone"))
+                            
+                        }.frame(width: screenWidth, height: 60, alignment: .center).background(Color.white).edgesIgnoringSafeArea(.all)
+                        Color.white.frame(width: geometry.size.width, height: geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    }
+                    if isMenuViewShown {
+                        menuView.frame(width: menuViewWidth, height: screenHeight, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                             withAnimation{
-                                self.isMenuViewShown.toggle()
+                                self.menuViewWidth = 0
                             }
-                        }, image: Image(systemName: "list.star"))
-                        
-                        tabBtn(actionBlock: {
-                            changeTab(selectTag: .home)
-                        }, image: currentTab == .home ?  Image(systemName: "house.fill") :  Image(systemName: "house"))
-                        
-                        tabBtn(actionBlock: {
-                            changeTab(selectTag: .tracking)
-                        }, image: currentTab == .tracking ?  Image(systemName: "magnifyingglass.circle.fill") :  Image(systemName: "magnifyingglass.circle"))
-                        
-                        tabBtn(actionBlock: {
-                            changeTab(selectTag: .delivery)
-                        }, image: currentTab == .delivery ?  Image(systemName: "bus.fill") :  Image(systemName: "bus"))
-                        
-                        tabBtn(actionBlock: {
-                            changeTab(selectTag: .notice)
-                        }, image: currentTab == .notice ?  Image(systemName: "megaphone.fill") :  Image(systemName: "megaphone"))
-                        
-                    }.frame(width: screenWidth, height: 60, alignment: .center).background(Color.white).edgesIgnoringSafeArea(.all)
-                    Color.white.frame(width: geometry.size.width, height: geometry.safeAreaInsets.bottom, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                }
-                if isMenuViewShown {
-                    menuView.frame(width: menuViewWidth, height: screenHeight, alignment: .leading).transition(.asymmetric(insertion: .slide, removal: .slide)).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-                        withAnimation{
-                            self.menuViewWidth = 0
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
-                            self.isMenuViewShown.toggle()
-                            self.menuViewWidth = screenWidth
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                                self.isMenuViewShown.toggle()
+                                self.menuViewWidth = screenWidth
+                            })
                         })
-                    })
-                }
-               
-            }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)
+                    }
+                   
+                }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)
+            }
         }
     }
 }
