@@ -12,9 +12,14 @@ struct CustomWebView: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack(alignment: .leading, spacing: 0.0){
-            Button("back", action: {
+            Button(action: {
                 presentationMode.wrappedValue.dismiss()
-            }).frame(width: 100,height:40)
+            }){
+                HStack(spacing:10.0){
+                    Image(systemName: "chevron.backward")
+                    Text("Back")
+                }
+            }.frame(height:40).padding(.leading)
             WebView(url: url)
         }.foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/).navigationBarHidden(true)
     }
