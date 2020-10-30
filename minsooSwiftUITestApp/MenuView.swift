@@ -16,7 +16,7 @@ struct MenuView: View {
                     ForEach(siteDataArray.siteData){ siteData in
                         NavigationLink(destination: CustomWebView(url: siteData.siteUrl)){
                             Text(siteData.siteName)
-                        }
+                        }.frame(height: 40)
                     }
                 }.colorMultiply(.orange)
             }
@@ -26,6 +26,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView().environmentObject(SiteDataArray())
     }
 }
