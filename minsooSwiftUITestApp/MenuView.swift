@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State private var menuViewWidth : CGFloat = UIScreen.main.bounds.size.width * 0.6
-    @State var orientation = UIDevice.current.orientation
-    let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-        .makeConnectable()
-        .autoconnect()
-    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
-            Color.orange
             VStack{
                 List{
-                    NavigationLink(destination: PushedView()){
-                        Text("Push")
+                    NavigationLink(destination: CustomWebView(url: "https://www.apple.co.kr")){
+                        Text("Apple")
                     }
-                    Text("2")
-                    Text("3")
-                    Text("4")
+                    NavigationLink(destination: CustomWebView(url: "https://www.google.co.kr")){
+                        Text("Google")
+                    }
+                    NavigationLink(destination: CustomWebView(url: "https://m.naver.com")){
+                        Text("Naver")
+                    }
+                    NavigationLink(destination: CustomWebView(url: "https://www.qxpress.net")){
+                        Text("Qxpress")
+                    }
                 }.colorMultiply(.orange)
             }
-        }) .onReceive(orientationChanged) { _ in
-            menuViewWidth = UIScreen.main.bounds.size.width * 0.6
-           }
+        })
     }
 }
 
