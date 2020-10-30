@@ -30,6 +30,7 @@ struct ContentView: View {
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
         .autoconnect()
+    let menuList = SiteDataArray()
     
     func getStatusBarColor(selectTag : MainTabType) -> Color {
         switch selectTag {
@@ -127,7 +128,7 @@ struct ContentView: View {
                                 if isMenuViewShown{
                                     isMenuViewShown = false
                                 }
-                            }
+                            }.environmentObject(menuList)
                     }
                    
                 }).navigationBarHidden(true).edgesIgnoringSafeArea(.all).background(Color.blue)

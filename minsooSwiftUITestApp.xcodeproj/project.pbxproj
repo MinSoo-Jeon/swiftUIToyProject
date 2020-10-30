@@ -16,6 +16,7 @@
 		014FB979254AAB60001F0294 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014FB978254AAB60001F0294 /* WebKit.framework */; };
 		01667035254BA785001807B4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01667034254BA785001807B4 /* WebView.swift */; };
 		0166703A254BAFF0001807B4 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01667039254BAFF0001807B4 /* CustomWebView.swift */; };
+		0166703D254BD653001807B4 /* SiteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0166703C254BD653001807B4 /* SiteData.swift */; };
 		018E84852547DAD200EF6236 /* minsooSwiftUITestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84842547DAD200EF6236 /* minsooSwiftUITestAppApp.swift */; };
 		018E84872547DAD200EF6236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84862547DAD200EF6236 /* ContentView.swift */; };
 		018E84892547DAD400EF6236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018E84882547DAD400EF6236 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		014FB978254AAB60001F0294 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		01667034254BA785001807B4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		01667039254BAFF0001807B4 /* CustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
+		0166703C254BD653001807B4 /* SiteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteData.swift; sourceTree = "<group>"; };
 		018E84812547DAD200EF6236 /* minsooSwiftUITestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minsooSwiftUITestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018E84842547DAD200EF6236 /* minsooSwiftUITestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = minsooSwiftUITestAppApp.swift; sourceTree = "<group>"; };
 		018E84862547DAD200EF6236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -102,6 +104,7 @@
 				014FB974254AA0F3001F0294 /* DimmedView.swift */,
 				01667034254BA785001807B4 /* WebView.swift */,
 				01667039254BAFF0001807B4 /* CustomWebView.swift */,
+				0166703C254BD653001807B4 /* SiteData.swift */,
 			);
 			path = minsooSwiftUITestApp;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				018E84872547DAD200EF6236 /* ContentView.swift in Sources */,
 				014FB96E254A6198001F0294 /* PushedView.swift in Sources */,
 				018E849B2547FFFB00EF6236 /* HomePageView.swift in Sources */,
+				0166703D254BD653001807B4 /* SiteData.swift in Sources */,
 				018E84852547DAD200EF6236 /* minsooSwiftUITestAppApp.swift in Sources */,
 				018E84A2254809F900EF6236 /* DeliveryView.swift in Sources */,
 				018E849F2548018A00EF6236 /* TrackingView.swift in Sources */,
