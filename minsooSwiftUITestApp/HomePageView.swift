@@ -12,6 +12,7 @@ struct HomePageView: View {
     @State private var isFullPresented = false
     @State private var isSheetPresented = false
     @State private var isPopOverPresented = false
+    @State private var isPhotoViewPresented = false
     
     var body: some View {
         ZStack(content: {
@@ -34,9 +35,17 @@ struct HomePageView: View {
                 }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                     isSheetPresented.toggle()
                 })
-                Spacer().frame(height : 50)
+                Spacer().frame(height: 50)
+                Text("Photo").foregroundColor(.white).foregroundColor(.white).sheet(isPresented: $isPhotoViewPresented, content: {
+                    PhotoView()
+                }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                    isPhotoViewPresented.toggle()
+                })
                 
                 if UIDevice.current.userInterfaceIdiom == .pad{
+                    
+                    Spacer().frame(height : 50)
+                    
                     Text("PopOver").foregroundColor(.white).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                         isPopOverPresented.toggle()
                     }).popover(isPresented: $isPopOverPresented) {
