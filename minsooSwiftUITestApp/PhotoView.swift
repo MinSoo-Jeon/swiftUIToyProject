@@ -9,47 +9,68 @@ import SwiftUI
 import Photos
 
 struct PhotoView: View {
-    @State private var imageArray = Array<PHAsset>()
+    @State var imageArray = Array<UIImage>()
     
     var body: some View {
         ZStack{
             Color.blue
-            VStack{
-                Text("Photo")
+            List(imageArray, id: \.self){image in
+                Image(uiImage: image)
             }
         }.edgesIgnoringSafeArea(.all)
         .onAppear(){
-            requestImage();
+            requestImage().enumerateObjects{PHAsset,Int,Bool in
+                let option = PHImageRequestOptions()
+                option.isSynchronous = true;
+                PHImageManager().requestImage(for: PHAsset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: option, resultHandler: {UIImage,info  in
+                    imageArray.append(UIImage!)
+                })
+            }
         }
     }
 }
 
-func requestImage() -> Void {
+private func requestImage() -> PHFetchResult<PHAsset> {
     let permisssion = PHPhotoLibrary.authorizationStatus(for: .readWrite)
     
     switch permisssion {
     case .authorized, .limited:
-        print("grant")
-        break
+        return getLocalImage()
     case .notDetermined:
+        let semaphore = DispatchSemaphore(value: 0)
+        var isAceess = false
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in
             switch status{
             case .authorized, .limited:
-                break
+                isAceess = true
             case .denied:
-                break
+                isAceess = false
             default:
-                break
+                isAceess = false
             }
+            
+            semaphore.signal();
         }
-        break
+        
+        semaphore.wait();
+        
+        if isAceess{
+            return getLocalImage()
+        }else{
+            return PHFetchResult<PHAsset>()
+        }
+        
     case .denied:
-        print("denied");
-        break
+        return PHFetchResult<PHAsset>()
     default:
-        print("default");
-        break
+        return PHFetchResult<PHAsset>()
     }
+}
+
+private func getLocalImage() -> PHFetchResult<PHAsset> {
+    let option = PHFetchOptions()
+    option.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+    return PHAsset.fetchAssets(with: .image, options: option)
 }
 
 
