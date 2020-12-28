@@ -8,7 +8,8 @@
 import SwiftUI
 import Photos
 
-struct PhotoData: Hashable {
+struct PhotoData: Hashable, Identifiable {
+    var id = UUID()
     var image:UIImage
     var title:String
 }
@@ -74,7 +75,7 @@ struct PhotoView: View {
     @ObservedObject var photoModel: PhotoModel = PhotoModel()
     var body: some View {
         ZStack{
-            List(photoModel.data, id: \.self){data in
+            List(photoModel.data){data in
                 HStack{
                     Image(uiImage: data.image).resizable().frame(width: 100, height:100)
                     Text(data.title)
