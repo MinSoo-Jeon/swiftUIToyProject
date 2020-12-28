@@ -8,13 +8,18 @@
 import SwiftUI
 import Photos
 
+struct PhotoData: Hashable {
+    var image:UIImage
+    var title:String
+}
+
 class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
-    @Published var imageArray:Array<UIImage> = []
+    @Published var data: [PhotoData] = []
     
     override init(){
         super.init()
         PHPhotoLibrary.shared().register(self)
-        self.requestImage()
+        requestImage()
     }
     
     func requestImage(){
@@ -46,11 +51,12 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
         option.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let asset = PHAsset.fetchAssets(with: .image, options: option)
         asset.enumerateObjects{PHAsset,Int,Bool in
+            let title = PHAsset.localIdentifier
             let option = PHImageRequestOptions()
             option.isSynchronous = true
-            PHImageManager().requestImage(for: PHAsset, targetSize: CGSize(width: 100, height: 100), contentMode: .default, options: option, resultHandler: {UIImage,info  in
+            PHImageManager().requestImage(for: PHAsset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: option, resultHandler: {UIImage,info  in
                 DispatchQueue.main.async {
-                    self.imageArray.append(UIImage!)
+                    self.data.append(PhotoData(image: UIImage!, title: title))
                 }
             })
         }
@@ -58,7 +64,7 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.main.async {
-            self.imageArray.removeAll()
+            self.data.removeAll()
             self.getLocalImage()
         }
     }
@@ -68,8 +74,11 @@ struct PhotoView: View {
     @ObservedObject var photoModel: PhotoModel = PhotoModel()
     var body: some View {
         ZStack{
-            List(photoModel.imageArray, id: \.self){image in
-                Image(uiImage: image).resizable().frame(width: 100, height:100)
+            List(photoModel.data, id: \.self){data in
+                HStack{
+                    Image(uiImage: data.image).resizable().frame(width: 100, height:100)
+                    Text(data.title)
+                }
             }
         }.edgesIgnoringSafeArea(.all)
     }
