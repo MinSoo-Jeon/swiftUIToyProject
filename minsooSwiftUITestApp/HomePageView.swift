@@ -17,46 +17,29 @@ struct HomePageView: View {
     var body: some View {
         ZStack(content: {
             Color.red
-            VStack(content: {
-                Spacer().frame(height : 50)
+            VStack(spacing: 50,content: {
+                Spacer().frame(height: 0)
                 Text("FullScreen Modal").foregroundColor(.white)
                     .onTapGesture(count: 1, perform: {
                         isFullPresented.toggle()
                     }).fullScreenCover(isPresented: $isFullPresented, content: {
                         ModalView()
                     })
-                Spacer().frame(height : 50)
                 NavigationLink(destination: PushedView()){
                     Text("Navigation Link (Push)").foregroundColor(.white)
                 }
-                Spacer().frame(height : 50)
                 Text("Sheet (Present)").foregroundColor(.white).sheet(isPresented: $isSheetPresented, content: {
                     ModalView()
                 }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                     isSheetPresented.toggle()
                 })
-                Spacer().frame(height: 50)
-                Text("Photo").foregroundColor(.white).foregroundColor(.white).sheet(isPresented: $isPhotoViewPresented, content: {
+                Text("Photo").foregroundColor(.white).sheet(isPresented: $isPhotoViewPresented, content: {
                     PhotoView()
                 }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                     isPhotoViewPresented.toggle()
                 })
-                
-                if UIDevice.current.userInterfaceIdiom == .pad{
-                    
-                    Spacer().frame(height : 50)
-                    
-                    Text("PopOver").foregroundColor(.white).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-                        isPopOverPresented.toggle()
-                    }).popover(isPresented: $isPopOverPresented) {
-                        VStack{
-                            Text("A").frame(width: 100, height: 100, alignment: .center).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-                                isPopOverPresented.toggle()
-                            })
-                        }
-                    }
-                }
-                
+
+                Text("Barcode").foregroundColor(.white)
                 Spacer()
             })
         })
