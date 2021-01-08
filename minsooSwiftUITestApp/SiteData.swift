@@ -9,15 +9,16 @@ import SwiftUI
 import Combine
 
 struct SiteData: Identifiable{
-    var id: Int
-    var siteName = "";
-    var siteUrl = "";
+    var id = UUID()
+    var siteName = ""
+    var siteUrl = ""
 }
 
 final class SiteDataArray: ObservableObject{
-    @Published var siteData : [SiteData] = [SiteData(id: 0, siteName: "Apple", siteUrl: "https://www.apple.co.kr"),
-                               SiteData(id: 1, siteName: "Google", siteUrl: "https://www.google.co.kr"),
-                               SiteData(id: 2, siteName: "Naver", siteUrl: "https://m.naver.com"),
-                               SiteData(id: 3, siteName: "Daum", siteUrl: "https://m.daum.net"),
-                               SiteData(id: 4, siteName: "Qxpress", siteUrl: "https://www.qxpress.net")]
+    @Published var siteData : [SiteData] = [SiteData(siteName: "Apple", siteUrl: "https://www.apple.co.kr"),
+                               SiteData(siteName: "Google", siteUrl: "https://www.google.co.kr"),
+                               SiteData(siteName: "Naver", siteUrl: "https://m.naver.com"),
+                               SiteData(siteName: "Daum", siteUrl: "https://m.daum.net"),
+                               SiteData(siteName: "Qoo10", siteUrl: "http://m.qoo10.com"),
+                               SiteData(siteName: "Qxpress", siteUrl: "http://www.qxpress.net")]
 }
