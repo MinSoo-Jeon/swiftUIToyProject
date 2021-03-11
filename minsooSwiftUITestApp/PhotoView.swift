@@ -16,6 +16,7 @@ struct PhotoData: Hashable, Identifiable {
 
 class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
     @Published var data: [PhotoData] = []
+    @Published var isImageLoading:Bool = true
     
     override init(){
         super.init()
@@ -36,12 +37,18 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
                     break
                 default:
                     print("did not auth")
+                    DispatchQueue.main.async {
+                        self.isImageLoading = false
+                    }
                     break
                 }
             })
             break
         default:
             print("did not auth")
+            DispatchQueue.main.async {
+                self.isImageLoading = false
+            }
             break
         }
     }
@@ -59,13 +66,18 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
                     tempData.append(PhotoData(image: UIImage!, title: title))
             })
         }
-        self.data = tempData
+        DispatchQueue.main.async {
+            self.data = tempData
+            self.isImageLoading = false
+        }
     }
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.main.async {
-            self.getLocalImage()
+            self.data.removeAll()
+            self.isImageLoading = true
         }
+        self.getLocalImage()
     }
 }
 
@@ -73,7 +85,7 @@ struct RowView: View {
     var data: PhotoData
     var body: some View{
         HStack{
-            Image(uiImage: data.image).resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+            Image(uiImage: data.image).resizable().aspectRatio(contentMode: .fill).frame(width: 100, height: 100).clipped()
             Text(data.title)
         }.frame(height: 100)
     }
@@ -87,6 +99,10 @@ struct PhotoView: View {
                 ForEach(photoModel.data) { data in
                     RowView(data: data)
                 }
+            }
+            
+            if photoModel.isImageLoading == true{
+                ProgressView().position(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 2 - 20)
             }
         }.edgesIgnoringSafeArea(.all)
         .onAppear{
