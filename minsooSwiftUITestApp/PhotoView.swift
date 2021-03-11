@@ -20,7 +20,6 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
     override init(){
         super.init()
         PHPhotoLibrary.shared().register(self)
-        requestImage()
     }
     
     func requestImage(){
@@ -48,6 +47,7 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
     }
     
     func getLocalImage() {
+        var tempData:[PhotoData] = []
         let option = PHFetchOptions()
         option.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let asset = PHAsset.fetchAssets(with: .image, options: option)
@@ -56,18 +56,26 @@ class PhotoModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver{
             let option = PHImageRequestOptions()
             option.isSynchronous = true
             PHImageManager().requestImage(for: PHAsset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: option, resultHandler: {UIImage,info  in
-                DispatchQueue.main.async {
-                    self.data.append(PhotoData(image: UIImage!, title: title))
-                }
+                    tempData.append(PhotoData(image: UIImage!, title: title))
             })
         }
+        self.data = tempData
     }
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.main.async {
-            self.data.removeAll()
             self.getLocalImage()
         }
+    }
+}
+
+struct RowView: View {
+    var data: PhotoData
+    var body: some View{
+        HStack{
+            Image(uiImage: data.image).resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+            Text(data.title)
+        }.frame(height: 100)
     }
 }
 
@@ -75,13 +83,18 @@ struct PhotoView: View {
     @ObservedObject var photoModel: PhotoModel = PhotoModel()
     var body: some View {
         ZStack{
-            List(photoModel.data){data in
-                HStack{
-                    Image(uiImage: data.image).resizable().frame(width: 100, height:100)
-                    Text(data.title)
+            List{
+                ForEach(photoModel.data) { data in
+                    RowView(data: data)
                 }
             }
         }.edgesIgnoringSafeArea(.all)
+        .onAppear{
+            print("onAppear")
+            DispatchQueue.main.async {
+                photoModel.requestImage()
+            }
+        }
     }
 }
 
