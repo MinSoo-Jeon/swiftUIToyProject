@@ -54,10 +54,12 @@
 	<string>Light</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>사진을 불러오기 위해 이 기능이 필요합니다.</string>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-    </dict>
+	<key>NSCameraUsageDescription</key>
+	<string>바코드를 읽기위해 이 기능이 필요합니다.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

@@ -13,6 +13,7 @@ struct HomePageView: View {
     @State private var isSheetPresented = false
     @State private var isPopOverPresented = false
     @State private var isPhotoViewPresented = false
+    @State private var isBarcodeViewPresented = false
     
     var body: some View {
         ZStack(content: {
@@ -38,8 +39,11 @@ struct HomePageView: View {
                 }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                     isPhotoViewPresented.toggle()
                 })
-
-                Text("Barcode").foregroundColor(.white)
+                Text("Barcode").foregroundColor(.white).sheet(isPresented: $isBarcodeViewPresented, content: {
+                    BarcodeView()
+                }).onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                    isBarcodeViewPresented.toggle()
+                })
                 Spacer()
             })
         })

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0105DEB125FB0ABD0079C79D /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105DEB025FB0ABD0079C79D /* BarcodeScanner.swift */; };
 		01260F6925480B3E00507D75 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01260F6825480B3E00507D75 /* NoticeView.swift */; };
 		01260F7125490A9B00507D75 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01260F7025490A9B00507D75 /* MenuView.swift */; };
+		0143D25225FB139F00353100 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0143D25125FB139F00353100 /* BarcodeScannerView.swift */; };
 		014FB9672549687A001F0294 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014FB9662549687A001F0294 /* Launch Screen.storyboard */; };
 		014FB96B254A56C1001F0294 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FB96A254A56C1001F0294 /* ModalView.swift */; };
 		014FB96E254A6198001F0294 /* PushedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FB96D254A6198001F0294 /* PushedView.swift */; };
@@ -29,8 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0105DEB025FB0ABD0079C79D /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		01260F6825480B3E00507D75 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		01260F7025490A9B00507D75 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
+		0143D25125FB139F00353100 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		014FB9662549687A001F0294 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		014FB96A254A56C1001F0294 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		014FB96D254A6198001F0294 /* PushedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushedView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				01667039254BAFF0001807B4 /* CustomWebView.swift */,
 				0166703C254BD653001807B4 /* SiteData.swift */,
 				018034522550F97E00408E3D /* PhotoView.swift */,
+				0105DEB025FB0ABD0079C79D /* BarcodeScanner.swift */,
+				0143D25125FB139F00353100 /* BarcodeScannerView.swift */,
 			);
 			path = minsooSwiftUITestApp;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			files = (
 				01260F7125490A9B00507D75 /* MenuView.swift in Sources */,
 				018034532550F97E00408E3D /* PhotoView.swift in Sources */,
+				0143D25225FB139F00353100 /* BarcodeScannerView.swift in Sources */,
 				014FB96B254A56C1001F0294 /* ModalView.swift in Sources */,
 				0166703A254BAFF0001807B4 /* CustomWebView.swift in Sources */,
 				014FB975254AA0F3001F0294 /* DimmedView.swift in Sources */,
@@ -203,6 +210,7 @@
 				018E84872547DAD200EF6236 /* ContentView.swift in Sources */,
 				014FB96E254A6198001F0294 /* PushedView.swift in Sources */,
 				018E849B2547FFFB00EF6236 /* HomePageView.swift in Sources */,
+				0105DEB125FB0ABD0079C79D /* BarcodeScanner.swift in Sources */,
 				0166703D254BD653001807B4 /* SiteData.swift in Sources */,
 				018E84852547DAD200EF6236 /* minsooSwiftUITestAppApp.swift in Sources */,
 				018E84A2254809F900EF6236 /* DeliveryView.swift in Sources */,
