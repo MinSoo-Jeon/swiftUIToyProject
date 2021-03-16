@@ -77,7 +77,6 @@ class BarcodeScanner: NSObject {
     }
     
     private func setupSessionInput() {
-
         guard let device = AVCaptureDevice.default(for: .video) else {
             // delegate error
             return
@@ -123,6 +122,11 @@ class BarcodeScanner: NSObject {
     }
     
     private func setupSessionOutput() {
+        guard let _ = AVCaptureDevice.default(for: .video) else {
+            // delegate error
+            return
+        }
+        
         let captureOutput = AVCaptureMetadataOutput()
         captureSession.addOutput(captureOutput)
         captureOutput.setMetadataObjectsDelegate(self, queue: metadataScannerQueue)
