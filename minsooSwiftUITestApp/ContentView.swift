@@ -36,7 +36,7 @@ struct ContentView: View {
         case .home:
             return Color.red
         case .tracking:
-            return Color.blue
+            return Color.white
         case .delivery:
             return Color.green
         case .notice:

@@ -19,6 +19,8 @@
 		01667035254BA785001807B4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01667034254BA785001807B4 /* WebView.swift */; };
 		0166703A254BAFF0001807B4 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01667039254BAFF0001807B4 /* CustomWebView.swift */; };
 		0166703D254BD653001807B4 /* SiteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0166703C254BD653001807B4 /* SiteData.swift */; };
+		01709BC926019FB900527886 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01709BC826019FB900527886 /* MapKit.framework */; };
+		01709BCB2601A0A300527886 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01709BCA2601A0A300527886 /* MapView.swift */; };
 		018034532550F97E00408E3D /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018034522550F97E00408E3D /* PhotoView.swift */; };
 		018034562550FA2000408E3D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018034552550FA2000408E3D /* Photos.framework */; };
 		018E84852547DAD200EF6236 /* minsooSwiftUITestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84842547DAD200EF6236 /* minsooSwiftUITestAppApp.swift */; };
@@ -44,6 +46,8 @@
 		01667034254BA785001807B4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		01667039254BAFF0001807B4 /* CustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
 		0166703C254BD653001807B4 /* SiteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteData.swift; sourceTree = "<group>"; };
+		01709BC826019FB900527886 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		01709BCA2601A0A300527886 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		018034522550F97E00408E3D /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		018034552550FA2000408E3D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		018E84812547DAD200EF6236 /* minsooSwiftUITestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minsooSwiftUITestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +68,7 @@
 			files = (
 				019954E6260198520033272F /* Alamofire in Frameworks */,
 				014FB979254AAB60001F0294 /* WebKit.framework in Frameworks */,
+				01709BC926019FB900527886 /* MapKit.framework in Frameworks */,
 				018034562550FA2000408E3D /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +79,7 @@
 		014FB977254AAB60001F0294 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01709BC826019FB900527886 /* MapKit.framework */,
 				018034552550FA2000408E3D /* Photos.framework */,
 				014FB978254AAB60001F0294 /* WebKit.framework */,
 			);
@@ -120,6 +126,7 @@
 				018034522550F97E00408E3D /* PhotoView.swift */,
 				0105DEB025FB0ABD0079C79D /* BarcodeScanner.swift */,
 				0143D25125FB139F00353100 /* BarcodeScannerView.swift */,
+				01709BCA2601A0A300527886 /* MapView.swift */,
 			);
 			path = minsooSwiftUITestApp;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 				01260F6925480B3E00507D75 /* NoticeView.swift in Sources */,
 				018E84872547DAD200EF6236 /* ContentView.swift in Sources */,
 				014FB96E254A6198001F0294 /* PushedView.swift in Sources */,
+				01709BCB2601A0A300527886 /* MapView.swift in Sources */,
 				018E849B2547FFFB00EF6236 /* HomePageView.swift in Sources */,
 				0105DEB125FB0ABD0079C79D /* BarcodeScanner.swift in Sources */,
 				0166703D254BD653001807B4 /* SiteData.swift in Sources */,
