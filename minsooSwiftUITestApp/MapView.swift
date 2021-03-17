@@ -8,31 +8,36 @@
 import MapKit
 import SwiftUI
 
-final class CustomMap: NSObject, CLLocationManagerDelegate{
-    
-    let map = MKMapView()
-    let locationManager = CLLocationManager()
-    
-    func setup(){
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        map.showsUserLocation = true
-    }
-}
-
 
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
-    
+
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = CustomMap()
-        mapView.setup()
-        return mapView.map
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.showsUserLocation = true
+        return mapView
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
+        var parent: MapView
+        let locationManager = CLLocationManager()
+        
+        init(_ parent: MapView){
+            self.parent = parent
+            super.init()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
     }
 }
 
