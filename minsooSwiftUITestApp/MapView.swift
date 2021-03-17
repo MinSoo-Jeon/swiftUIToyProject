@@ -11,11 +11,10 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
+    let mapView = MKMapView()
 
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        mapView.showsUserLocation = true
         return mapView
     }
     
@@ -23,20 +22,31 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(mapView)
     }
     
     class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
-        var parent: MapView
         let locationManager = CLLocationManager()
+        var map: MKMapView
         
-        init(_ parent: MapView){
-            self.parent = parent
+        init(_ parent: MKMapView){
+            map = parent
             super.init()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
+            map.showsUserLocation = true
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            if let location = locations.last {
+                let pLocation = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                let spanValue = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                let pRegion = MKCoordinateRegion(center: pLocation, span: spanValue)
+                map.setRegion(pRegion, animated: true)
+            }
+            manager.stopUpdatingLocation()
         }
     }
 }
