@@ -9,53 +9,53 @@ import Foundation
 import UIKit
 import SwiftUI
 
-final class BarcodeScannerView: UIView, BarcodeScannerDelegate{
-    
-    var scanner:BarcodeScanner?
-    var videoPreview: UIView {
-        return self
+struct BarcodeScannerView: UIViewRepresentable{
+    let scanner = BarcodeScanner()
+    func makeUIView(context: Context) -> UIViewType {
+        scanner.delegate = context.coordinator
+        return scanner.preView
     }
     
-    var rectOfInterest: CGRect{
-        let mainBound = UIScreen.main.bounds
-        return CGRect(x: (mainBound.size.width - 213) / 2, y: (mainBound.size.height - 193) / 2, width: 213, height: 193)
+    func updateUIView(_ uiView: UIView, context: Context) {
     }
     
-    func scanner(_ scanner: BarcodeScanner, didCaptureString str: String) {
-        print(str)
+    func makeCoordinator() -> Coordinator {
+        Coordinator(scanner)
     }
     
-    func scannerReady(_ scanner: BarcodeScanner) {
-        print("ready")
-        scanner.startCapturing()
-    }
+    class Coordinator: NSObject, BarcodeScannerDelegate{
+        
+        var scanner: BarcodeScanner
     
-    func scannerEndScanning(_ scanner: BarcodeScanner) {
-        print("end")
-        scanner.startCapturing()
-    }
-    
-    func setup(){
-        scanner = BarcodeScanner.init(self)
-    }
-}
-
-struct RepresentableBarcodeScanner: UIViewRepresentable{
-    
-    func makeUIView(context: Context) -> BarcodeScannerView {
-        let scanner = BarcodeScannerView()
-        scanner.setup()
-        return scanner
-    }
-    
-    func updateUIView(_ uiView: BarcodeScannerView, context: Context) {
+        init(_ parent : BarcodeScanner){
+            scanner = parent
+        }
+        
+        var rectOfInterest: CGRect {
+            let mainBound = UIScreen.main.bounds
+            return CGRect(x: (mainBound.size.width - 213) / 2, y: (mainBound.size.height - 193) / 2 , width: 213, height: 193)
+        }
+        
+        func scanner(_ scanner: BarcodeScanner, didCaptureString str: String) {
+            print(str)
+        }
+        
+        func scannerReady(_ scanner: BarcodeScanner) {
+            print("ready")
+            scanner.startCapturing()
+        }
+        
+        func scannerEndScanning(_ scanner: BarcodeScanner) {
+            print("end")
+            scanner.startCapturing()
+        }
     }
 }
 
 struct BarcodeView: View{
     var body: some View{
         ZStack{
-            RepresentableBarcodeScanner()
+            BarcodeScannerView()
             Image("scanArea")
         }.edgesIgnoringSafeArea(.all)
         .onAppear{

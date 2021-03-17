@@ -9,7 +9,6 @@ import UIKit
 import AVFoundation
 
 protocol BarcodeScannerDelegate:AnyObject {
-    var videoPreview: UIView { get }
     // scanning area rect
     var rectOfInterest: CGRect { get }
     func scanner(_ scanner: BarcodeScanner, didCaptureString str:String)
@@ -22,7 +21,8 @@ class BarcodeScanner: NSObject {
     weak var delegate: BarcodeScannerDelegate?
     private let scannerQueue = DispatchQueue(label: "Scanner Queue")
     private let metadataScannerQueue = DispatchQueue(label: "Metadata Scanner Queue")
-    let tempView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    let backView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    let preView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
 
     private var captureSession = AVCaptureSession()
     private var captureDevice: AVCaptureDevice?
@@ -45,16 +45,17 @@ class BarcodeScanner: NSObject {
     .upce]
     
     private var roiBounds: CGRect {
-        guard let roi = delegate?.rectOfInterest, let videoPreview = delegate?.videoPreview else {
+        guard let roi = delegate?.rectOfInterest else {
             return CGRect.zero
         }
-        return tempView.convert(roi, to: videoPreview)
+        
+        return roi
     }
     
-    public init(_ delegate:BarcodeScannerDelegate) {
+    override init() {
         super.init()
-        self.delegate = delegate
         self.prepareCamera()
+        self.preView.backgroundColor = .black
     }
     
     deinit {
@@ -69,9 +70,9 @@ class BarcodeScanner: NSObject {
         self.setupSessionOutput()
         
         DispatchQueue.main.async {
-            self.delegate?.videoPreview.layer.insertSublayer(self.videoPreviewLayer, at: 0)
-            self.videoPreviewLayer.frame = self.delegate?.videoPreview.bounds ?? .zero
-            self.delegate?.videoPreview.setNeedsLayout()
+            self.preView.layer.insertSublayer(self.videoPreviewLayer, at: 0)
+            self.videoPreviewLayer.frame = self.preView.bounds
+            self.preView.setNeedsLayout()
             self.delegate?.scannerReady(self)
         }
     }
