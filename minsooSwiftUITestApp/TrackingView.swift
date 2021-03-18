@@ -121,7 +121,6 @@ struct TrackingView: View {
             callBikeUrl(1)
         }).onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
             print("willEnterForeground")
-            mapView.removeAllAnnotations()
             callBikeUrl(1)
         })
     }
