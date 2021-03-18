@@ -32,7 +32,6 @@ struct MapView: UIViewRepresentable {
     func addAnotationList(_ list: [BikeRowData]){
         list.forEach{
             let item = $0
-            print(item)
             let point = MKPointAnnotation()
             point.title = item.stationName
             point.subtitle = item.parkingBikeTotCnt + "/" + item.rackTotCnt

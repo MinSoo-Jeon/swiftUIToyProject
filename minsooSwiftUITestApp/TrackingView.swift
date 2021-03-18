@@ -104,12 +104,12 @@ struct TrackingView: View {
                             if let rowData = subData.row{
                                 mapView.addAnotationList(rowData)
                             }
+                            if subData.total == 1000 {
+                                callBikeUrl(start + 1000)
+                            }
                         }else{
                             print("fail")
                         }
-                    }
-                    if subData.total == 1000 {
-                        callBikeUrl(start + 1000)
                     }
                 }
             }
