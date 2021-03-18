@@ -99,7 +99,7 @@ struct ContentView: View {
                             
                             tabBtn(actionBlock: {
                                 changeTab(selectTag: .tracking)
-                            }, image: currentTab == .tracking ?  Image(systemName: "magnifyingglass.circle.fill") :  Image(systemName: "magnifyingglass.circle"))
+                            }, image: currentTab == .tracking ?  Image(systemName: "map.fill") :  Image(systemName: "map"))
                             
                             tabBtn(actionBlock: {
                                 changeTab(selectTag: .delivery)
