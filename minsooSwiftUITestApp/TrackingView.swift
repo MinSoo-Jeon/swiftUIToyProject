@@ -119,6 +119,10 @@ struct TrackingView: View {
     var body: some View {
         mapView.onAppear(perform: {
             callBikeUrl(1)
+        }).onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
+            print("willEnterForeground")
+            mapView.removeAllAnnotations()
+            callBikeUrl(1)
         })
     }
 }

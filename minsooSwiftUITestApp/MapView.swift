@@ -25,6 +25,10 @@ struct MapView: UIViewRepresentable {
         Coordinator(mapView)
     }
     
+    func removeAllAnnotations(){
+        mapView.removeAnnotations(mapView.annotations)
+    }
+    
     func addAnotationList(_ list: [BikeRowData]){
         list.forEach{
             let item = $0
@@ -49,6 +53,11 @@ struct MapView: UIViewRepresentable {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             map.showsUserLocation = true
+            NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
+        }
+        
+        deinit {
+            NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -86,9 +95,11 @@ struct MapView: UIViewRepresentable {
                 annotationView!.image = UIImage(named: "bikeicon")
             }
             
-
-            
             return annotationView
+        }
+        
+        @objc func appWillEnterForeground(){
+            locationManager.startUpdatingLocation()
         }
     }
 }
