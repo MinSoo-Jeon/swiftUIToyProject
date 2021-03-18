@@ -49,7 +49,7 @@ struct MapView: UIViewRepresentable {
             locationManager.startUpdatingLocation()
             map.showsUserLocation = true
             NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         }
         
         deinit {
@@ -99,7 +99,7 @@ struct MapView: UIViewRepresentable {
             locationManager.startUpdatingLocation()
         }
         
-        @objc func appWillResignActive(){
+        @objc func appDidEnterBackground(){
             map.removeAnnotations(map.annotations)
         }
     }
