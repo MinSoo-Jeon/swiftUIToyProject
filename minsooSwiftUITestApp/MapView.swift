@@ -31,6 +31,7 @@ struct MapView: UIViewRepresentable {
             print(item)
             let point = MKPointAnnotation()
             point.title = item.stationName
+            point.subtitle = item.parkingBikeTotCnt + "/" + item.rackTotCnt
             point.coordinate = CLLocationCoordinate2D(latitude: Double(item.latitude) ?? 0.0, longitude: Double(item.longitude) ?? 0.0)
             mapView.addAnnotation(point)
         }
@@ -58,6 +59,36 @@ struct MapView: UIViewRepresentable {
                 map.setRegion(pRegion, animated: true)
             }
             manager.stopUpdatingLocation()
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard annotation is MKPointAnnotation else { return nil }
+
+            let identifier = "Annotation"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            if let subtile = annotation.subtitle{
+                let subTitleArray = subtile?.split(separator: "/")
+                let avalilable = Int(subTitleArray![0]) ?? 0
+                if avalilable > 0 {
+                    annotationView!.image = UIImage(named: "bikeicon")
+                }else{
+                    annotationView!.image = UIImage(named: "nobike")
+                }
+            }else{
+                annotationView!.image = UIImage(named: "bikeicon")
+            }
+            
+
+            
+            return annotationView
         }
     }
 }
