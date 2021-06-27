@@ -30,8 +30,39 @@
 		018E849B2547FFFB00EF6236 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E849A2547FFFB00EF6236 /* HomePageView.swift */; };
 		018E849F2548018A00EF6236 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E849E2548018A00EF6236 /* TrackingView.swift */; };
 		018E84A2254809F900EF6236 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E84A1254809F900EF6236 /* DeliveryView.swift */; };
+		018F22ED268843B300F64BEF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018F22EC268843B300F64BEF /* WidgetKit.framework */; };
+		018F22EF268843B300F64BEF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018F22EE268843B300F64BEF /* SwiftUI.framework */; };
+		018F22F2268843B300F64BEF /* minsooSwiftUIWidgetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F22F1268843B300F64BEF /* minsooSwiftUIWidgetTest.swift */; };
+		018F22F5268843B400F64BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018F22F4268843B400F64BEF /* Assets.xcassets */; };
+		018F22F7268843B400F64BEF /* minsooSwiftUIWidgetTest.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 018F22F3268843B300F64BEF /* minsooSwiftUIWidgetTest.intentdefinition */; };
+		018F22F8268843B400F64BEF /* minsooSwiftUIWidgetTest.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 018F22F3268843B300F64BEF /* minsooSwiftUIWidgetTest.intentdefinition */; };
+		018F22FB268843B400F64BEF /* minsooSwiftUIWidgetTestExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 018F22EB268843B300F64BEF /* minsooSwiftUIWidgetTestExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		019954E6260198520033272F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 019954E5260198520033272F /* Alamofire */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		018F22F9268843B400F64BEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 018E84792547DAD200EF6236 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 018F22EA268843B300F64BEF;
+			remoteInfo = minsooSwiftUIWidgetTestExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		018F22FC268843B400F64BEF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				018F22FB268843B400F64BEF /* minsooSwiftUIWidgetTestExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0105DEB025FB0ABD0079C79D /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
@@ -59,6 +90,13 @@
 		018E849A2547FFFB00EF6236 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		018E849E2548018A00EF6236 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		018E84A1254809F900EF6236 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
+		018F22EB268843B300F64BEF /* minsooSwiftUIWidgetTestExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = minsooSwiftUIWidgetTestExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		018F22EC268843B300F64BEF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		018F22EE268843B300F64BEF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		018F22F1268843B300F64BEF /* minsooSwiftUIWidgetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = minsooSwiftUIWidgetTest.swift; sourceTree = "<group>"; };
+		018F22F3268843B300F64BEF /* minsooSwiftUIWidgetTest.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = minsooSwiftUIWidgetTest.intentdefinition; sourceTree = "<group>"; };
+		018F22F4268843B400F64BEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018F22F6268843B400F64BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +111,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		018F22E8268843B300F64BEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018F22EF268843B300F64BEF /* SwiftUI.framework in Frameworks */,
+				018F22ED268843B300F64BEF /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +129,8 @@
 				01709BC826019FB900527886 /* MapKit.framework */,
 				018034552550FA2000408E3D /* Photos.framework */,
 				014FB978254AAB60001F0294 /* WebKit.framework */,
+				018F22EC268843B300F64BEF /* WidgetKit.framework */,
+				018F22EE268843B300F64BEF /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				018E84832547DAD200EF6236 /* minsooSwiftUITestApp */,
+				018F22F0268843B300F64BEF /* minsooSwiftUIWidgetTest */,
 				018E84822547DAD200EF6236 /* Products */,
 				014FB977254AAB60001F0294 /* Frameworks */,
 			);
@@ -99,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				018E84812547DAD200EF6236 /* minsooSwiftUITestApp.app */,
+				018F22EB268843B300F64BEF /* minsooSwiftUIWidgetTestExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +190,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		018F22F0268843B300F64BEF /* minsooSwiftUIWidgetTest */ = {
+			isa = PBXGroup;
+			children = (
+				018F22F1268843B300F64BEF /* minsooSwiftUIWidgetTest.swift */,
+				018F22F3268843B300F64BEF /* minsooSwiftUIWidgetTest.intentdefinition */,
+				018F22F4268843B400F64BEF /* Assets.xcassets */,
+				018F22F6268843B400F64BEF /* Info.plist */,
+			);
+			path = minsooSwiftUIWidgetTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,10 +211,12 @@
 				018E847D2547DAD200EF6236 /* Sources */,
 				018E847E2547DAD200EF6236 /* Frameworks */,
 				018E847F2547DAD200EF6236 /* Resources */,
+				018F22FC268843B400F64BEF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				018F22FA268843B400F64BEF /* PBXTargetDependency */,
 			);
 			name = minsooSwiftUITestApp;
 			packageProductDependencies = (
@@ -162,17 +226,37 @@
 			productReference = 018E84812547DAD200EF6236 /* minsooSwiftUITestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		018F22EA268843B300F64BEF /* minsooSwiftUIWidgetTestExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 018F22FF268843B400F64BEF /* Build configuration list for PBXNativeTarget "minsooSwiftUIWidgetTestExtension" */;
+			buildPhases = (
+				018F22E7268843B300F64BEF /* Sources */,
+				018F22E8268843B300F64BEF /* Frameworks */,
+				018F22E9268843B300F64BEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = minsooSwiftUIWidgetTestExtension;
+			productName = minsooSwiftUIWidgetTestExtension;
+			productReference = 018F22EB268843B300F64BEF /* minsooSwiftUIWidgetTestExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		018E84792547DAD200EF6236 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					018E84802547DAD200EF6236 = {
 						CreatedOnToolsVersion = 12.1;
+					};
+					018F22EA268843B300F64BEF = {
+						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
@@ -193,6 +277,7 @@
 			projectRoot = "";
 			targets = (
 				018E84802547DAD200EF6236 /* minsooSwiftUITestApp */,
+				018F22EA268843B300F64BEF /* minsooSwiftUIWidgetTestExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -208,6 +293,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		018F22E9268843B300F64BEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018F22F5268843B400F64BEF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -220,6 +313,7 @@
 				0143D25225FB139F00353100 /* BarcodeScannerView.swift in Sources */,
 				014FB96B254A56C1001F0294 /* ModalView.swift in Sources */,
 				0166703A254BAFF0001807B4 /* CustomWebView.swift in Sources */,
+				018F22F8268843B400F64BEF /* minsooSwiftUIWidgetTest.intentdefinition in Sources */,
 				014FB975254AA0F3001F0294 /* DimmedView.swift in Sources */,
 				01260F6925480B3E00507D75 /* NoticeView.swift in Sources */,
 				018E84872547DAD200EF6236 /* ContentView.swift in Sources */,
@@ -235,7 +329,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		018F22E7268843B300F64BEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018F22F2268843B300F64BEF /* minsooSwiftUIWidgetTest.swift in Sources */,
+				018F22F7268843B400F64BEF /* minsooSwiftUIWidgetTest.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		018F22FA268843B400F64BEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 018F22EA268843B300F64BEF /* minsooSwiftUIWidgetTestExtension */;
+			targetProxy = 018F22F9268843B400F64BEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		018E848E2547DAD400EF6236 /* Debug */ = {
@@ -357,6 +468,7 @@
 		018E84912547DAD400EF6236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +491,7 @@
 		018E84922547DAD400EF6236 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,6 +506,50 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = minsoo.minsooSwiftUITestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		018F22FD268843B400F64BEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K3YHJ3P4UV;
+				INFOPLIST_FILE = minsooSwiftUIWidgetTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = minsoo.minsooSwiftUITestApp.minsooSwiftUIWidgetTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		018F22FE268843B400F64BEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K3YHJ3P4UV;
+				INFOPLIST_FILE = minsooSwiftUIWidgetTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = minsoo.minsooSwiftUITestApp.minsooSwiftUIWidgetTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -415,6 +572,15 @@
 			buildConfigurations = (
 				018E84912547DAD400EF6236 /* Debug */,
 				018E84922547DAD400EF6236 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		018F22FF268843B400F64BEF /* Build configuration list for PBXNativeTarget "minsooSwiftUIWidgetTestExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				018F22FD268843B400F64BEF /* Debug */,
+				018F22FE268843B400F64BEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
